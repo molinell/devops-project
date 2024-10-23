@@ -64,9 +64,20 @@
           <version>3.3.0</version>
         </plugin>
         <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.4.2</version>
-        </plugin>
+    		<!-- Specify the MAIN class for the executable JAR file -->
+			<groupId>org.apache.maven.plugins</groupId>
+      		<artifactId>maven-jar-plugin</artifactId>
+          	<version>3.2.0</version>
+      		<configuration>
+        		<archive>
+          			<manifest>
+                		<addClasspath>true</addClasspath>
+                		<classpathPrefix>lib/</classpathPrefix>
+                		<mainClass>org.irel.quizGame.App</mainClass>
+          			</manifest>
+        		</archive>
+      		</configuration>
+		</plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
           <version>3.1.2</version>
