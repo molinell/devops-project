@@ -12,7 +12,11 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-        Game game = new Game();
-        game.run();
+       // GameV1 game = new GameV1();
+       // game.run();
+        
+    	GameV3 game3 = new GameV3();
+        //Game.GameV2 gamev2 = new Game.GameV2();
+        //gameV2.run();
     }
 }
