@@ -8,8 +8,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class GameV3 {
 	
@@ -49,10 +52,12 @@ public class GameV3 {
 			}
 		}
 		server.stop(0);
-
+		
 		if(!loggedIn) System.exit(1);
-
+		System.out.println("*** Welcome to quiz game ***");
 		Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome back " + player.getName());
+
 
 
 		System.out.print("How many rounds of questions?: ");
@@ -62,7 +67,6 @@ public class GameV3 {
 			r = questions.size();
 		this.rounds = r;
 
-		System.out.println("*** Welcome to quiz game ***");
 
 		// Version 2 code with category
 		System.out.println("\nPlease select a category:");
@@ -74,6 +78,27 @@ public class GameV3 {
 		scanner.nextLine();
 
 		System.out.println("\nYou selected: " + selectedCategory + "\n");
+		
+		
+		System.out.print("LEADER BOARD \n");
+		Collections.sort(users, new Comparator<Player>() {
+		    @Override
+		    public int compare(Player p1, Player p2) {
+		        return Integer.compare(p2.getScore(), p1.getScore());
+		    }
+		});
+
+		// Print sorted users
+		for (Player player : users) {
+		    System.out.printf("Player: %s, Age: %d, Score: %d\n", player.getName(), player.getAge(), player.getScore());
+		}
+		System.out.print("\n");
+		try {
+			TimeUnit.SECONDS.sleep(3);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

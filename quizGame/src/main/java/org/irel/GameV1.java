@@ -5,6 +5,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 //stop ignoring
+//Simple quiz-game 
+//One single player can choose how many rounds (5, 10, all questions etc.) 
+//Keeps track of running score but forgets once game is finished 
 
 public class GameV1 {
 	private int rounds;
