@@ -15,7 +15,6 @@ public class DB {
     users.add(new Player("Mark", 40, "facebook", 4));
     }
 	
-	// Logga in genom att se om index 0 (namnet) matchar index 2 (password) i arrayen
 	public ArrayList<Player> getUsers() {
         return users;
     }

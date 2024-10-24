@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit;
 public class GameV3 {
 	
 	// Select categories (done)
-	// Choose difficulties 
 	// Leader board of all players
 	private ArrayList<Question> questions;
 	private DB db = new DB();

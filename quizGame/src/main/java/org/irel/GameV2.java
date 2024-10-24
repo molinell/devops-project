@@ -15,11 +15,6 @@ import java.util.Scanner;
 public class GameV2 {
 	// Add accounts
 	// sign-up and login
-	// Store scores, name and age
-
-    // Add accounts
-    // login
-    // Store scores, name and age
 
     private DB db = new DB();
     private ArrayList<Player> users;
