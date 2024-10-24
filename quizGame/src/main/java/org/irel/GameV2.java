@@ -13,7 +13,10 @@ public class GameV2 {
 		
 		for (Player player : users) {
             System.out.printf("Player: %s, Age: %d, Score: %d\n", player.getName(), player.getAge(), player.getScore());
-        }
+        
+		
+		
+		}
 
 	}
 
