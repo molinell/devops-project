@@ -57,7 +57,7 @@
       <recent name="org.irel" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.PlayerTest">
     <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="quizGame" />
       <extension name="coverage">
