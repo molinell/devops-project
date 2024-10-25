@@ -14,28 +14,28 @@ class DBTest {
 	 
 	 @BeforeEach
      void setUp() {
-    	users = new ArrayList<>();
-	   	users.add(new Player("Name", 00, "password", 10));
-	   	users.add(new Player("Name2", 22, "pass", 22));
-	   	
-    	db = new DB(users);
-
+		 db = new DB();
 	 }
 
+	 @Test
+	 void getUsers() {
+	     ArrayList<Player> users = db.getUsers();
 
-	@Test
-	void getUsers() {
-		ArrayList<Player> users = db.getUsers();
-    	assertEquals(2, users.size());
-    	
-    	assertEquals("Name", users.get(0).getName());
-        assertEquals(00, users.get(0).getAge());
-        assertEquals("password", users.get(0).getPassword());
-        
-        assertEquals("Name2", users.get(1).getName());
-        assertEquals(22, users.get(1).getAge());
-        assertEquals("pass", users.get(1).getPassword());
-		
-	}
+         assertEquals("Elon", users.get(0).getName());
+         assertEquals(53, users.get(0).getAge());
+         assertEquals("space", users.get(0).getPassword());
+         assertEquals(5, users.get(0).getScore());
+         
+         assertEquals("Jeff", users.get(1).getName());
+         assertEquals(60, users.get(1).getAge());
+         assertEquals("amazon", users.get(1).getPassword());
+         assertEquals(1, users.get(1).getScore());
+
+         assertEquals("Mark", users.get(2).getName());
+         assertEquals(40, users.get(2).getAge());
+         assertEquals("facebook", users.get(2).getPassword());
+         assertEquals(4, users.get(2).getScore());
+	 }
+	
 
 }
