@@ -15,6 +15,10 @@ public class DB {
     users.add(new Player("Mark", 40, "facebook", 4));
     }
 	
+	public DB(ArrayList<Player> users) {
+        this.users = users;
+	    }
+	
 	public ArrayList<Player> getUsers() {
         return users;
     }

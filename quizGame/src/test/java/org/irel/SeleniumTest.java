@@ -25,7 +25,7 @@ public class SeleniumTest {
 					e.printStackTrace();
 				}  
 		        
-		        // SUCCESSFULL LOGIN TEST
+		     // SUCCESSFULL LOGIN TEST
 		     // Step # | name | target | value
 		        // 1 | open | / | 
 		        driver.get("http://localhost:8080/");
@@ -37,14 +37,25 @@ public class SeleniumTest {
 		        idField.click();
 		        // 4 | type | id=username | Elon
 		        idField.sendKeys("Elon");
-		        // 5 | click | id=password | 
-		        driver.findElement(By.id("password")).click();
-		        // 6 | type | id=password | space
-		        driver.findElement(By.id("password")).sendKeys("space");
-		        // 7 | click | css=input:nth-child(9) | 
-		        driver.findElement(By.cssSelector("input:nth-child(9)")).click();
 		        
-			 System.out.println("Execution was successful");
+		        WebElement idPass = driver.findElement(By.id("password"));
+		        // 5 | click | id=password | 
+		        idPass.click();
+		        // 6 | type | id=password | space
+		        idPass.sendKeys("space");
+		        // 7 | click | css=input:nth-child(9) | 
+		        // Make sure the button will be found in several cases 
+		        WebElement submitBtn = null;
+		        if(submitBtn == null) {
+		        	submitBtn = driver.findElement(By.cssSelector("input:nth-child(9)"));
+		        }
+		        if(submitBtn == null) {
+			        driver.findElement(By.xpath("//input[@value=\'Submit\']"));
+		        }
+		        submitBtn.click();
+
+		        
+			 System.out.println("Execution of successful login test was successful");
 	     
 	    }
 	}
