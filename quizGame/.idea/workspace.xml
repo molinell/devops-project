@@ -4,43 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81bae197-00ab-47d6-a1fa-52dd8b1105fd" name="Changes" comment="V4 login">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/App.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/DB.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/GameV1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/GameV2$FormHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/GameV2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/GameV3$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/GameV3$FormHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/GameV3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/GameV4$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/GameV4$FormHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/GameV4.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/Player.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/Question$Categories.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/Question.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/irel/Utils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/quizGame-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.irel.AppTest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/org.irel.AppTest.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/org/irel/AppTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/org/irel/DBTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/org/irel/PlayerTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/org/irel/QuestionTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/org/irel/SeleniumTest.class" afterDir="false" />
+    <list default="true" id="81bae197-00ab-47d6-a1fa-52dd8b1105fd" name="Changes" comment="restructuring of login">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/irel/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/irel/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/irel/GameV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/irel/GameV2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/irel/GameV3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/irel/GameV3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/irel/GameV4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/irel/GameV4.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/irel/SeleniumTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/irel/SeleniumTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,16 +35,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/ellenmolin/Desktop/devops-project/quizGame&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/ellenmolin/Desktop/devops-project/quizGame"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -191,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729762805684</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="restructuring of login">
+      <option name="closed" value="true" />
+      <created>1729918148775</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1729918148775</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -200,6 +174,7 @@
     <MESSAGE value="V2" />
     <MESSAGE value="V3 login" />
     <MESSAGE value="V4 login" />
-    <option name="LAST_COMMIT_MESSAGE" value="V4 login" />
+    <MESSAGE value="restructuring of login" />
+    <option name="LAST_COMMIT_MESSAGE" value="restructuring of login" />
   </component>
 </project>
