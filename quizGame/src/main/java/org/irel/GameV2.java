@@ -13,8 +13,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GameV2 {
-	// Add accounts
-	// sign-up and login
+    // Add accounts
+    // sign-up and login
 
     private DB db = new DB();
     private ArrayList<Player> users;
@@ -29,11 +29,63 @@ public class GameV2 {
         this.users = db.getUsers();
         this.player = null;
         this.questions = Question.generateQuestions();
+    }
 
-        if(!login()) {
+    public void run() {
+        login();
+
+        System.out.println("*** Quiz game ***");
+        System.out.println("Welcome back " + player.getName());
+
+        System.out.print("How many rounds of questions?: ");
+        Scanner scanner = new Scanner(System.in);
+        String roundsString = scanner.nextLine();
+        int gameRounds = Integer.parseInt(roundsString);
+        if (gameRounds > questions.size())
+            gameRounds = questions.size();
+        this.rounds = gameRounds;
+
+        int points = 0;
+
+        ArrayList<Question> unUsedQ = questions;
+        while (gameRounds > 0) {
+            Question currentQ = unUsedQ.get((new Random()).nextInt(unUsedQ.size()));
+
+            System.out.printf("*** %s ***\n", currentQ.getQuestion());
+            System.out.printf("1: %s    2: %s\n3: %s    4: %s\n", currentQ.getAnswerOptions().get(0),
+                    currentQ.getAnswerOptions().get(1), currentQ.getAnswerOptions().get(2),
+                    currentQ.getAnswerOptions().get(3));
+
+            while (true) {
+                try {
+                    String ans = scanner.nextLine();
+                    if (!ans.matches("[1-4]"))
+                        throw new IllegalArgumentException("Invalid input");
+                    if (Integer.parseInt(ans) - 1 == currentQ.getCorrectAnswer()) {
+                        System.out.println("Correct!");
+                        points++;
+                    } else {
+                        System.out.println("Wrong");
+                    }
+                    break;
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+
+            unUsedQ.remove(currentQ);
+            gameRounds--;
+        }
+        System.out.println("\n*** Game Over ***");
+        System.out.printf("You got %d / %d points\n", points, rounds);
+    }
+
+    public void login() {
+        if (!startServer()) {
             System.out.println("An error occured, try again later");
             System.exit(1);
         }
+        System.out.println("Please navigate to the following link to login: http://localhost:8080/");
 
         //https://stackoverflow.com/questions/21124879/how-do-i-make-java-wait-for-a-method-to-finish-before-continuing
         //https://www.baeldung.com/java-wait-notify
@@ -48,65 +100,15 @@ public class GameV2 {
         }
         server.stop(0);
 
-        if(!loggedIn) System.exit(1);
-
-        System.out.println("*** Quiz game ***");
-        System.out.println("Welcome back " + player.getName());
-
-        System.out.print("How many rounds of questions?: ");
-        Scanner scanner = new Scanner(System.in);
-        String roundsString = scanner.nextLine();
-        int r = Integer.parseInt(roundsString);
-        if (r > questions.size())
-            r = questions.size();
-        this.rounds = r;
-
+        if (!loggedIn) System.exit(1);
     }
 
-    void run() {
-            int points = 0;
-            Scanner scanner = new Scanner(System.in);
-            ArrayList<Question> unUsedQ = questions;
-            int gameRounds = rounds;
-            while (gameRounds > 0) {
-                Question currentQ = unUsedQ.get((new Random()).nextInt(unUsedQ.size()));
-
-                System.out.printf("*** %s ***\n", currentQ.getQuestion());
-                System.out.printf("1: %s    2: %s\n3: %s    4: %s\n", currentQ.getAnswerOptions().get(0),
-                        currentQ.getAnswerOptions().get(1), currentQ.getAnswerOptions().get(2),
-                        currentQ.getAnswerOptions().get(3));
-
-                while (true) {
-                    try {
-                        String ans = scanner.nextLine();
-                        if (!ans.matches("[1-4]"))
-                            throw new IllegalArgumentException("Invalid input");
-                        if (Integer.parseInt(ans) - 1 == currentQ.getCorrectAnswer()) {
-                            System.out.println("Correct!");
-                            points++;
-                        } else {
-                            System.out.println("Wrong");
-                        }
-                        break;
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
-
-                unUsedQ.remove(currentQ);
-                gameRounds--;
-            }
-            System.out.println("\n*** Game Over ***");
-            System.out.printf("You got %d / %d points\n", points, rounds);
-        }
-
-    private boolean login() {
+    public boolean startServer() {
         try {
             server = HttpServer.create(new InetSocketAddress(8080), 0);
             server.createContext("/", new FormHandler());
             server.setExecutor(null); // creates a default executor
             server.start();
-            System.out.println("Please navigate to the following link to login: http://localhost:8080/");
             return true;
         } catch (final IOException exception) {
             exception.printStackTrace();
@@ -157,8 +159,8 @@ public class GameV2 {
                 String password = params[1].split("=")[1];
 
                 String response = "<html><body><h1>Invalid username or password</h1><body></html>";
-                for(Player p : users){
-                    if(p.getName().equals(username)){
+                for (Player p : users) {
+                    if (p.getName().equals(username)) {
                         if (p.getPassword().equals(password)) {
                             response = "<html><body><h1>Login successful, return to program to play</h1><body></html>";
                             loggedIn = true;
@@ -179,5 +181,9 @@ public class GameV2 {
                 }
             }
         }
+    }
+
+    public HttpServer getServer() {
+        return server;
     }
 }

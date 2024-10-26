@@ -33,26 +33,10 @@ public class GameV4 {
         this.users = db.getUsers();
         this.player = null;
         questions = Question.generateQuestions();
+    }
 
-        if (!login()) {
-            System.out.println("An error occured, try again later");
-            System.exit(1);
-        }
-
-        //https://stackoverflow.com/questions/21124879/how-do-i-make-java-wait-for-a-method-to-finish-before-continuing
-        //https://www.baeldung.com/java-wait-notify
-        synchronized (this) {
-            while (!loginComplete) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        server.stop(0);
-
-        if (!loggedIn) System.exit(1);
+    public void run() {
+        login();
 
         System.out.println("*** Quiz game ***");
         System.out.println("Welcome back " + player.getName());
@@ -60,10 +44,10 @@ public class GameV4 {
         Scanner scanner = new Scanner(System.in);
         System.out.print("How many rounds of questions?: ");
         String roundsString = scanner.nextLine();
-        int r = Integer.parseInt(roundsString);
-        if (r > questions.size())
-            r = questions.size();
-        this.rounds = r;
+        int gameRounds = Integer.parseInt(roundsString);
+        if (gameRounds > questions.size())
+            gameRounds = questions.size();
+        this.rounds = gameRounds;
 
         // Version 2 code with category
         System.out.println("\nPlease select a category:");
@@ -75,35 +59,31 @@ public class GameV4 {
         scanner.nextLine();
 
         System.out.println("\nYou selected: " + selectedCategory + "\n");
-        
+
         System.out.print("LEADER BOARD \n");
-		Collections.sort(users, new Comparator<Player>() {
-		    @Override
-		    public int compare(Player p1, Player p2) {
-		        return Integer.compare(p2.getScore(), p1.getScore());
-		    }
-		});
+        Collections.sort(users, new Comparator<Player>() {
+            @Override
+            public int compare(Player p1, Player p2) {
+                return Integer.compare(p2.getScore(), p1.getScore());
+            }
+        });
 
-		// Print sorted users
-		for (Player player : users) {
-		    System.out.printf("Player: %s, Age: %d, Score: %d\n", player.getName(), player.getAge(), player.getScore());
-		}
-		System.out.print("\n");
-		try {
-			TimeUnit.SECONDS.sleep(3);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        // Print sorted users
+        for (Player player : users) {
+            System.out.printf("Player: %s, Age: %d, Score: %d\n", player.getName(), player.getAge(), player.getScore());
+        }
+        System.out.print("\n");
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
-    }
-
-    public void run() {
-        String noYes;
+        //String noYes;
         int points = 0;
-        Scanner scanner = new Scanner(System.in);
         // ArrayList<Question> unUsedQ = questions;
-        int gameRounds = rounds;
+        //int gameRounds = rounds;
 
         // Only show the selected category questions
         ArrayList<Question> filteredQuestions = new ArrayList<>();
@@ -112,11 +92,11 @@ public class GameV4 {
                 filteredQuestions.add(q);
             }
         }
-        ArrayList<Question> unUsedQ = filteredQuestions;
+        //ArrayList<Question> unUsedQ = filteredQuestions;
 
         // Same code as earlier
         while (gameRounds > 0) {
-            Question currentQ = unUsedQ.get((new Random()).nextInt(unUsedQ.size()));
+            Question currentQ = filteredQuestions.get((new Random()).nextInt(filteredQuestions.size()));
 
             System.out.printf("*** %s ***\n", currentQ.getQuestion());
             System.out.printf("1: %s    2: %s\n3: %s    4: %s\n",
@@ -142,18 +122,19 @@ public class GameV4 {
                 }
             }
 
-            unUsedQ.remove(currentQ);
+            filteredQuestions.remove(currentQ);
             gameRounds--;
         }
+
         System.out.println("\n*** Game Over ***");
         System.out.printf("You got %d / %d points\n", points, rounds);
 
         System.out.println("Would you like to suggest a category and questions to the game developers? yes/no ");
-        noYes = Utils.getStringInput();
+        String noYes = Utils.getStringInput();
         if (noYes.equalsIgnoreCase("yes") || noYes.equalsIgnoreCase("y")) {
-            System.out.print("Please submit a category:");
+            System.out.print("Please submit a category: ");
             String cat = Utils.getStringInput();
-            System.out.print("\nHow many questions would you like to submit?:");
+            System.out.print("\nHow many questions would you like to submit?: ");
             int size = Utils.getIntInput();
             String[] questions = new String[size];
 
@@ -172,13 +153,35 @@ public class GameV4 {
 
     }
 
-    private boolean login() {
+    public void login() {
+        if (!startServer()) {
+            System.out.println("An error occured, try again later");
+            System.exit(1);
+        }
+        System.out.println("Please navigate to the following link to login: http://localhost:8080/");
+
+        //https://stackoverflow.com/questions/21124879/how-do-i-make-java-wait-for-a-method-to-finish-before-continuing
+        //https://www.baeldung.com/java-wait-notify
+        synchronized (this) {
+            while (!loginComplete) {
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        server.stop(0);
+
+        if (!loggedIn) System.exit(1);
+    }
+
+    public boolean startServer() {
         try {
             server = HttpServer.create(new InetSocketAddress(8080), 0);
-            server.createContext("/", new FormHandler());
+            server.createContext("/", new GameV4.FormHandler());
             server.setExecutor(null); // creates a default executor
             server.start();
-            System.out.println("Please navigate to the following link to login: http://localhost:8080/");
             return true;
         } catch (final IOException exception) {
             exception.printStackTrace();
@@ -262,5 +265,8 @@ public class GameV4 {
         return player;
     }
 
+    public HttpServer getServer() {
+        return server;
+    }
 }
 

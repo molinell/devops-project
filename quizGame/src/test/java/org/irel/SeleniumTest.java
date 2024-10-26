@@ -1,5 +1,7 @@
 package org.irel;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.Dimension;
 
 import org.junit.jupiter.api.Test;
@@ -9,11 +11,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 public class SeleniumTest {
-	
-	    @Test
+
+	GameV2 game;
+	@BeforeEach
+	void setUp() {
+		game = new GameV2();
+		game.startServer();
+	}
+
+	@Test
 	    public void shouldAnswerWithTrue() 
 	    {
-	    	System.setProperty("webdriver.chrome.driver", "C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
+	    	System.setProperty("webdriver.chrome.driver", "/Users/ellenmolin/Downloads/chromedriver-mac-arm64/chromedriver");//"C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
 			ChromeOptions options = new ChromeOptions();
 	    	WebDriver driver = new ChromeDriver(options);    
 	    	System.out.println("Driver found, now searching for target page");
@@ -58,6 +67,11 @@ public class SeleniumTest {
 			 System.out.println("Execution of successful login test was successful");
 	     
 	    }
+
+	@AfterEach
+	void tearDown() {
+		game.getServer().stop(0);
 	}
+}
 
 
