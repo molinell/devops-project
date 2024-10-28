@@ -96,7 +96,7 @@
               <executable>docker</executable>
               <arguments>
                 <argument>push</argument>
-                <argument>molinell/quizgame_test</argument>
+                <argument>molinell/quizgame</argument>
                 <argument>-a</argument>
               </arguments>
             </configuration>
