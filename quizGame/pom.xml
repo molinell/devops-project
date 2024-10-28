@@ -5,7 +5,7 @@
 
   <groupId>org.irel</groupId>
   <artifactId>quizGame</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
   <name>quizGame</name>
   <!-- FIXME change it to the project's website -->
@@ -14,6 +14,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
+    <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
   </properties>
 
   <dependencyManagement>
@@ -62,6 +63,31 @@
   </dependencies>
 
   <build>
+    <plugins>
+      <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>dockerfile-maven-plugin</artifactId>
+        <version>1.4.13</version>
+        <executions>
+          <execution>
+            <id>default</id>
+            <phase>install</phase>
+            <goals>
+              <goal>build</goal>
+              <goal>push</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <repository>molinell/quizgame_test</repository>
+          <tag>${project.version}</tag>
+          <tag>latest</tag>
+          <buildArgs>
+            <JAR_FILE>target/quizGame-1.0.jar</JAR_FILE>
+          </buildArgs>
+        </configuration>
+      </plugin>
+    </plugins>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
