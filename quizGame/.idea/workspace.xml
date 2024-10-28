@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81bae197-00ab-47d6-a1fa-52dd8b1105fd" name="Changes" comment="Selenium test deny login">
+    <list default="true" id="81bae197-00ab-47d6-a1fa-52dd8b1105fd" name="Changes" comment="possible docker img build and push">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/irel/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/irel/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729935868729</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="possible docker img build and push">
+      <option name="closed" value="true" />
+      <created>1730137047910</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1730137047910</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -186,6 +193,7 @@
     <MESSAGE value="V4 login" />
     <MESSAGE value="restructuring of login" />
     <MESSAGE value="Selenium test deny login" />
-    <option name="LAST_COMMIT_MESSAGE" value="Selenium test deny login" />
+    <MESSAGE value="possible docker img build and push" />
+    <option name="LAST_COMMIT_MESSAGE" value="possible docker img build and push" />
   </component>
 </project>

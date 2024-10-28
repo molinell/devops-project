@@ -14,7 +14,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
-    <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
   </properties>
 
   <dependencyManagement>
@@ -65,27 +64,44 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>com.spotify</groupId>
-        <artifactId>dockerfile-maven-plugin</artifactId>
-        <version>1.4.13</version>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.0.0</version>
         <executions>
           <execution>
-            <id>default</id>
+            <id>docker-build</id>
             <phase>install</phase>
             <goals>
-              <goal>build</goal>
-              <goal>push</goal>
+              <goal>exec</goal>
             </goals>
+            <configuration>
+              <executable>docker</executable>
+              <arguments>
+                <argument>build</argument>
+                <argument>-t</argument>
+                <argument>molinell/quizgame:${project.version}</argument>
+                <argument>-t</argument>
+                <argument>molinell/quizgame:latest</argument>
+                <argument>.</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>docker-push</id>
+            <phase>install</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>docker</executable>
+              <arguments>
+                <argument>push</argument>
+                <argument>molinell/quizgame_test</argument>
+                <argument>-a</argument>
+              </arguments>
+            </configuration>
           </execution>
         </executions>
-        <configuration>
-          <repository>molinell/quizgame_test</repository>
-          <tag>${project.version}</tag>
-          <tag>latest</tag>
-          <buildArgs>
-            <JAR_FILE>target/quizGame-1.0.jar</JAR_FILE>
-          </buildArgs>
-        </configuration>
       </plugin>
     </plugins>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
@@ -118,7 +134,7 @@
           			<manifest>
                 		<addClasspath>true</addClasspath>
                 		<classpathPrefix>lib/</classpathPrefix>
-                		<mainClass>org.irel.quizGame.App</mainClass>
+                		<mainClass>org.irel.App</mainClass>
           			</manifest>
         		</archive>
       		</configuration>
