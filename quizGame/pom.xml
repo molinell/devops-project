@@ -79,7 +79,7 @@
               <arguments>
                 <argument>build</argument>
                 <argument>-t</argument>
-                <argument>molinell/quizgame:${project.version}</argument>
+                <argument>molinell/quizgame:4</argument>
                 <argument>-t</argument>
                 <argument>molinell/quizgame:latest</argument>
                 <argument>.</argument>

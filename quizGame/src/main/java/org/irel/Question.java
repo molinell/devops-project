@@ -61,11 +61,7 @@ public class Question {
                 new String[] { "Mango", "Durian", "Pineapple", "Papaya" }));
         questions.add(new Question(Question.Categories.FOOD, "Which spice is commonly used in Indian curry dishes", 2,
                 new String[] { "Basil", "Paprika", "Turmeric", "Rosemary" }));
-        questions.add(new Question(Question.Categories.FOOD,
-                "What fruit is known as 'the king of fruits' in many south asian countries?", 1,
-                new String[] { "Mango", "Durian", "Pineapple", "Papaya" }));
-        questions.add(
-                new Question(Question.Categories.FOOD, "Which of the following food is the netherlands NOT famous for?",
+        questions.add(new Question(Question.Categories.FOOD, "Which of the following food is the netherlands NOT famous for?",
                         3, new String[] { "Apple pie", "Stroopwaffle", "Poffertjes", "Speculaas" }));
         questions.add(new Question(Question.Categories.FOOD, "Which of the following is a traditional finnish food?", 0,
                 new String[] { "Lax soppa", "Janssons frestelse", "Smörrebröd", "Fårikål" }));
