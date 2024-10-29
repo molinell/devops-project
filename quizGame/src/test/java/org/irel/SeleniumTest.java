@@ -14,11 +14,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SeleniumTest {
 
-    GameV2 game;
+    Game game;
 
     @BeforeEach
     void setUp() {
-        game = new GameV2();
+        game = new Game();
         game.startServer();
     }
 

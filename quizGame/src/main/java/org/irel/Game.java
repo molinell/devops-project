@@ -1,5 +1,7 @@
 package org.irel;
 
+import java.util.ArrayList;
+
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
@@ -7,104 +9,51 @@ import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
-public class GameV3 {
+public class Game {
+    // Add accounts
+    // sign-up and login
 
-    // Select categories (done)
-    // Leader board of all players
-    private ArrayList<Question> questions;
     private DB db = new DB();
     private ArrayList<Player> users;
     private Player player;
     private boolean loggedIn = false;
+    private ArrayList<Question> questions;
     private int rounds;
     private boolean loginComplete = false;
     private HttpServer server;
-    Question.Categories selectedCategory;
 
-    GameV3() {
-        // Same code as earlier
-        questions = Question.generateQuestions();
+    Game() {
         this.users = db.getUsers();
         this.player = null;
+        this.questions = Question.generateQuestions();
     }
 
     public void run() {
         login();
 
         System.out.println("*** Quiz game ***");
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome back " + player.getName());
 
         System.out.print("How many rounds of questions?: ");
+        Scanner scanner = new Scanner(System.in);
         String roundsString = scanner.nextLine();
         int gameRounds = Integer.parseInt(roundsString);
         if (gameRounds > questions.size())
             gameRounds = questions.size();
         this.rounds = gameRounds;
 
-
-        // Version 2 code with category
-        System.out.println("\nPlease select a category:");
-        for (Question.Categories category : Question.Categories.values()) {
-            System.out.println(category.ordinal() + 1 + ". " + category);
-        }
-        int categorySelection = scanner.nextInt();
-        this.selectedCategory = Question.Categories.values()[categorySelection - 1];
-        scanner.nextLine();
-
-        System.out.println("\nYou selected: " + selectedCategory + "\n");
-
-
-        System.out.print("LEADER BOARD \n");
-        Collections.sort(users, new Comparator<Player>() {
-            @Override
-            public int compare(Player p1, Player p2) {
-                return Integer.compare(p2.getScore(), p1.getScore());
-            }
-        });
-
-        // Print sorted users
-        for (Player player : users) {
-            System.out.printf("Player: %s, Age: %d, Score: %d\n", player.getName(), player.getAge(), player.getScore());
-        }
-        System.out.print("\n");
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-
         int points = 0;
-        // ArrayList<Question> unUsedQ = questions;
-        //int gameRounds = rounds;
 
-        // Only show the selected category questions
-        ArrayList<Question> filteredQuestions = new ArrayList<>();
-        for (Question q : questions) {
-            if (q.getCategory() == selectedCategory) {
-                filteredQuestions.add(q);
-            }
-        }
-        //ArrayList<Question> unUsedQ = filteredQuestions;
-
-        // Same code as earlier
+        ArrayList<Question> unUsedQ = questions;
         while (gameRounds > 0) {
-            Question currentQ = filteredQuestions.get((new Random()).nextInt(filteredQuestions.size()));
+            Question currentQ = unUsedQ.get((new Random()).nextInt(unUsedQ.size()));
 
             System.out.printf("*** %s ***\n", currentQ.getQuestion());
-            System.out.printf("1: %s    2: %s\n3: %s    4: %s\n",
-                    currentQ.getAnswerOptions().get(0),
-                    currentQ.getAnswerOptions().get(1),
-                    currentQ.getAnswerOptions().get(2),
+            System.out.printf("1: %s    2: %s\n3: %s    4: %s\n", currentQ.getAnswerOptions().get(0),
+                    currentQ.getAnswerOptions().get(1), currentQ.getAnswerOptions().get(2),
                     currentQ.getAnswerOptions().get(3));
 
             while (true) {
@@ -124,7 +73,7 @@ public class GameV3 {
                 }
             }
 
-            filteredQuestions.remove(currentQ);
+            unUsedQ.remove(currentQ);
             gameRounds--;
         }
         System.out.println("\n*** Game Over ***");
@@ -157,7 +106,7 @@ public class GameV3 {
     public boolean startServer() {
         try {
             server = HttpServer.create(new InetSocketAddress(8080), 0);
-            server.createContext("/", new GameV3.FormHandler());
+            server.createContext("/", new FormHandler());
             server.setExecutor(null); // creates a default executor
             server.start();
             return true;
@@ -226,21 +175,12 @@ public class GameV3 {
                 os.write(response.getBytes());
                 os.close();
 
-                synchronized (GameV3.this) {
+                synchronized (Game.this) {
                     loginComplete = true;
-                    GameV3.this.notify();
+                    Game.this.notify();
                 }
             }
         }
-    }
-
-
-    public int getGameRounds() {
-        return rounds;
-    }
-
-    public Player getPlayer() {
-        return player;
     }
 
     public HttpServer getServer() {
