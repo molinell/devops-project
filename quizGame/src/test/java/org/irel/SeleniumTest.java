@@ -14,18 +14,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SeleniumTest {
 
-    GameV2 game;
+    Game game;
 
     @BeforeEach
     void setUp() {
-        game = new GameV2();
+        game = new Game();
         game.startServer();
     }
 
     @Test
     public void shouldAllowLogin() {
-       // System.setProperty("webdriver.chrome.driver", "/Users/ellenmolin/Downloads/chromedriver-mac-arm64/chromedriver");//"C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/ellenmolin/Downloads/chromedriver-mac-arm64/chromedriver");//"C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
         WebDriver driver = new ChromeDriver(options);
@@ -91,8 +91,8 @@ public class SeleniumTest {
 
     @Test
     public void shouldDenyLogin() {
-        //System.setProperty("webdriver.chrome.driver", "/Users/ellenmolin/Downloads/chromedriver-mac-arm64/chromedriver");//"C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/ellenmolin/Downloads/chromedriver-mac-arm64/chromedriver");//"C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
         WebDriver driver = new ChromeDriver(options);

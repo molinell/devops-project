@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="81bae197-00ab-47d6-a1fa-52dd8b1105fd" name="Changes" comment="functioning docker img build and push">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/irel/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/irel/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/irel/GameV1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/irel/GameV2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/irel/GameV3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/irel/GameV4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/irel/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/irel/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/irel/Utils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/irel/SeleniumTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/irel/SeleniumTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,17 +43,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Places",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "version3",
-    "last_opened_file_path": "/Users/ellenmolin/Desktop/devops-project/quizGame"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;version3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ellenmolin/Desktop/devops-project/quizGame&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -54,7 +62,7 @@
       <recent name="org.irel" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlayerTest">
+  <component name="RunManager">
     <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="quizGame" />
       <extension name="coverage">
