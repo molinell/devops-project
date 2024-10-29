@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81bae197-00ab-47d6-a1fa-52dd8b1105fd" name="Changes" comment="functioning docker img build and push">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/irel/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/irel/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +41,7 @@
     "TODO_SCOPE": "All Places",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "version3",
+    "git-widget-placeholder": "version4",
     "last_opened_file_path": "/Users/ellenmolin/Desktop/devops-project/quizGame"
   }
 }]]></component>
