@@ -24,8 +24,8 @@ public class SeleniumTest {
 
     @Test
     public void shouldAllowLogin() {
-       System.setProperty("webdriver.chrome.driver", "/Users/ellenmolin/Downloads/chromedriver-mac-arm64/chromedriver");//"C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
-        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
+       //System.setProperty("webdriver.chrome.driver", "/Users/ellenmolin/Downloads/chromedriver-mac-arm64/chromedriver");//"C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
         WebDriver driver = new ChromeDriver(options);
@@ -91,8 +91,8 @@ public class SeleniumTest {
 
     @Test
     public void shouldDenyLogin() {
-        System.setProperty("webdriver.chrome.driver", "/Users/ellenmolin/Downloads/chromedriver-mac-arm64/chromedriver");//"C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
-        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "/Users/ellenmolin/Downloads/chromedriver-mac-arm64/chromedriver");//"C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\irisf\\WorkDir\\chromedriver-win64\\chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
         WebDriver driver = new ChromeDriver(options);
