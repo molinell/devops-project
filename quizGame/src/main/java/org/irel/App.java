@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-       GameV1 game = new GameV1();
+       Game game = new Game();
        game.run();
         
         //VERSION !!!!!!1

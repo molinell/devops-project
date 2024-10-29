@@ -8,12 +8,12 @@ import java.util.Scanner;
 //One single player can choose how many rounds (5, 10, all questions etc.) 
 
 
-public class GameV1 {
+public class Game {
 	private int rounds;
 	private Player player;
 	private ArrayList<Question> questions;
 
-	GameV1() {
+	Game() {
 		questions = Question.generateQuestions();
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("How many rounds of questions?: ");
